@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./dist/tailwind.css" />
     <!--Tailwind css will be inserted here-->
+    <link rel="stylesheet" href="./dist/tailwind.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.css"
@@ -12,20 +12,28 @@
 
     <title>Birthday Bashorama</title>
   </head>
-  <body>
-    <header>
-        <h1 id="main-header" class=""> Welcome to Birthday Bashorama!</h1>
-            <h2 id="sub-header" class="">Kick back and see what top hits came out around your timeframe!</h2>
+  <body class="bg-no-repeat bg-black bg-center object-cover h-full w-full" style="background-image: url(https://cdn.wallpapersafari.com/80/26/W34E0N.jpg);">
+    <div class="min-h-screen py-6 flex flex-col justify-center sm:py-12">
+        <div id="bday-banner" class="relative py-3 sm:max-w-xl sm:mx-auto">
+          <div class="absolute inset-0 bg-gradient-to-r from-red-400 to-blue-500 shadow-lg transform -skew-y- sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl"></div>
+          <div class="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20">
+    <header class="text-center">
+        <h1 id="main-header" class="uppercase font-bold font- text-pink-400 text-3xl space-y-4"> Welcome to Birthday Bashorama!</h1>
+            <h2 id="sub-header" class="text-lg text-mono space-y-2">Kick back and see what top hits came out around your timeframe!</h2>
     </header>
-    <div id="bd" class="">
+    <div id="bd" class="space-y-2">
         <h3 id="dub-header">When is your birthday? Select a date down below</h3>
+    </div>
       <!--block for entering birth date-->
+      <div class="object-bottom space-y-6">
       <input type="date" id="birthday" name="bday" value="" min="1980-01-01" max="2021-12-31">
     </div>
-    <div>
+    <div class="ring-current flex justify-center">
     <!--submit button goes here-->
-    <button id="birthdata" type="submit" class="">Enter</button>
+    <button id="birthdata" type="submit" class="cursor-pointer bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 w-auto">Enter</button>
     </div>
+</div>
+</div>
 
     <div id="title" class="">
         <h3 id="dub-header" class="">Now what was the hit jam?</h3>
@@ -41,7 +49,9 @@
     <div id="response-movie" class="">
          <!--block for generating #1 movie/movie poster-->
     </div>
+</div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="./assets/js/script.js"></script>
+    <script src="./assets/js/tailwind.config.js"></script>
   </body>
 </html>
