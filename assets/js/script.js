@@ -1,17 +1,46 @@
-import "tailwindcss/tailwind.css";
-//universal variables
-//function for rendering night mode ((more on the css side))
-//storage of birthdates in this format MM/DD/YYYY
-$(birthdata).on("click",(){
-    hideForm();
-})
+$(document).ready(function(){
+    //APIs for song titles
 
-function hideForm () {
-    document.getElementById("bday-banner").setAttribute("style","display:none");
+    //APIs for Movie titles
+
+//universal variables
+$("#birthday").datepicker({dateFormat: "mm/dd/yyyy"});
+var getInput= $("#birthday").datepicker().val();
+console.log(getInput);
+// function for saving data
+function saveDate() {
+    var getInput =$("#birthday").datepicker().val();
+    console.log(getInput);
+    var selectDate = ($(getInput).text().split("/")[3]);
+    console.log(selectDate);
 }
-//loading of birthdates
-//APIs for song titles
+saveDate();
+
+//function for rendering night mode ((more on the css side))
+    $("#birthdata").click(function() {
+        //storage of birthdates in this format MM/DD/YYYY
+        const dates = $(this).siblings("#birthday").val();
+        console.log(dates);
+        localStorage.setItem("birthday",dates);
+
+        $("#main-header").hide();
+        $("#sub-header").hide();
+         $("#dub-header").hide();
+        $("#birthday").hide();
+        // $("#next-title").hide();
+        $("#next-title").show();
+        $("#next-header").show();
+        $("response-song").show();
+        $("#nextBtn").show();
+    });
+
+    $("birthdata").click(function(){});
+
+});
+function getArt() {
+
+};
+//function for rendering night mode ((more on the css side))
 //generate music videos or album covers
-//APIs for Movie titles
 //display movie posters
 
