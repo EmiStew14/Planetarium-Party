@@ -1,14 +1,53 @@
 function myFunction() {
-var searchTerm = document.querySelector('#space').value;
+var searchTerm = document.querySelector('#searchTerm').value;
+var images = {};
     //APIs for nasa image/video searches
     fetch(
-        'https://images-api.nasa.gov/search?keyword=' +
-        searchTerm +
-        '&api_key=gjZC63LaKuSLXhNgiDg9p4FBX1BpluoL4msLBp0D'
+        'https://images-api.nasa.gov/search?q=' + searchTerm 
     )
     .then(function(nasaResponse){
+        console.log(nasaResponse);
         return nasaResponse.json();
     })
+    .then(data => {images=data;
+        Object.keys(data).forEach((key) => {
+            var seePic = document.createElement("span");
+            var spaceImg = document.createElement('img');
+            spaceImg.setAttribute('src', data[key]);
+            console.log(data[key]);
+            seePic.appendChild(spaceImg);
+           document.querySelector('#response-Nasa').appendChild(seePic);
+        });
+    })
+    .catch(err => console.error(err));
+    $("#searchTerm").change(function() {
+        var findText=$("#searchTerm").val();
+        $("#response-Nasa").empty();
+        getSpace(function(){
+            Object.keys(images).forEach((key) =>{
+                if(images[key].indexOf(findText)!== -1){
+            var seePic = document.createElement("span");
+            var spaceImg = document.createElement('img');
+            spaceImg.setAttribute('src', images[key]);
+            console.log(images[key]);
+            seePic.appendChild(spaceImg);
+            document.querySelector('#response-Nasa').appendChild(seePic);
+                }
+            });
+        },0);
+    });
+} 
+    // console.log(nasaResponse);
+
+        // var responseContain = document.querySelector('#response-Nasa');
+
+        // responseContain.innerHTML = '';
+
+        // var spaceImg = document.createElement('img');
+        // spaceImg.setAttribute('src', nasaResponse.collection.links.data["href"]);
+        // console.log(spaceImg);
+
+        // respondContain.appendChild(spaceImg);
 
 //universal variables
 // $("#birthday").datepicker({dateFormat: "mm/dd/yyyy"});
@@ -43,7 +82,6 @@ var searchTerm = document.querySelector('#space').value;
 
     $("birthdata").click(function(){});
 
-}
 function getArt() {
 
 };
