@@ -20,23 +20,33 @@ var images = {};
         });
     })
     .catch(err => console.error(err));
-    $("#searchTerm").change(function() {
         var findText=$("#searchTerm").val();
         $("#response-Nasa").empty();
-        getSpace(function(){
-            Object.keys(images).forEach((key) =>{
-                if(images[key].indexOf(findText)!== -1){
-            var seePic = document.createElement("span");
-            var spaceImg = document.createElement('img');
-            spaceImg.setAttribute('src', images[key]);
-            console.log(images[key]);
-            seePic.appendChild(spaceImg);
-            document.querySelector('#response-Nasa').appendChild(seePic);
-                }
-            });
-        },0);
-    });
-} 
+      
+        console.log({
+         search_term: findText,
+         images
+        })
+      
+        Object.keys(images).forEach((key) => {
+          console.log(images[key])
+        });
+      
+      
+        // getSpace(function(){
+        //     Object.keys(images).forEach((key) =>{
+        //         if(images[key].indexOf(findText)!== -1){
+        //     var seePic = document.createElement("span");
+        //     var spaceImg = document.createElement('img');
+        //     spaceImg.setAttribute('src', images[key]);
+        //     console.log(images[key]);
+        //     seePic.appendChild(spaceImg);
+        //     document.querySelector('#response-Nasa').appendChild(seePic);
+        //         }
+        //     });
+        // },0);
+      }
+
     // console.log(nasaResponse);
 
         // var responseContain = document.querySelector('#response-Nasa');
@@ -63,11 +73,11 @@ var images = {};
 // saveDate();
 
 //function for rendering night mode ((more on the css side))
-    $("#birthdata").click(function() {
+    $("#space").click(function() {
         //storage of birthdates in this format MM/DD/YYYY
-        const dates = $(this).siblings("#birthday").val();
-        console.log(dates);
-        localStorage.setItem("birthday",dates);
+        const search = $(this).siblings("#searchTerm").val();
+        console.log(search);
+        localStorage.setItem("searchTerm",search);
 
         $("#main-header").hide();
         $("#sub-header").hide();
@@ -80,7 +90,7 @@ var images = {};
         $("#nextBtn").show();
     });
 
-    $("birthdata").click(function(){});
+    $("#space").click(function(){});
 
 function getArt() {
 
