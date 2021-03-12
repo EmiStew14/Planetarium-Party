@@ -46,18 +46,14 @@
           <!--block for entering birth date-->
           <div class="object-bottom space-y-6">
             <input
-              type="date"
-              id="birthday"
-              name="bday"
+              type="text"
+              id="searchTerm"
               value=""
-              required pattern="\d{4}-\d{2}-\d{2}"
-              min="1980-01-01"
-              max="2021-12-31"
             />
           </div>
           <div class="ring-current flex justify-center">
             <!--submit button goes here-->
-            <button
+            <button onclick="myFunction()"
               id="birthdata"
               type="submit"
               value=""
@@ -71,7 +67,7 @@
 
       <div id="next-title" class="" style="display:none">
         <h3 id="next-header" class="">Now what was the hit jam?</h3>
-          <div id="response-song" class="">
+          <div id="response-Nasa" class="">
           <!-- block for generating #1 song/music video/album cover-->
           </div>
       </div>
@@ -79,7 +75,7 @@
       <div id="next-title" style="display:none" class="">
         <h3 id="dub-header" class="">Nice! Now let's see a movie!</h3>
       </div>
-      <div id="response-movie" class="">
+      <div id="response-wiki" class="">
         <!--block for generating #1 movie/movie poster-->
       </div>
     </div>

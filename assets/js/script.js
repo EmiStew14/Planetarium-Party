@@ -1,20 +1,27 @@
-$(document).ready(function(){
-    //APIs for song titles
-
-    //APIs for Movie titles
+function myFunction() {
+var searchTerm = document.querySelector('#space').value;
+    //APIs for nasa image/video searches
+    fetch(
+        'https://images-api.nasa.gov/search?keyword=' +
+        searchTerm +
+        '&api_key=gjZC63LaKuSLXhNgiDg9p4FBX1BpluoL4msLBp0D'
+    )
+    .then(function(nasaResponse){
+        return nasaResponse.json();
+    })
 
 //universal variables
-$("#birthday").datepicker({dateFormat: "mm/dd/yyyy"});
-var getInput= $("#birthday").datepicker().val();
-console.log(getInput);
-// function for saving data
-function saveDate() {
-    var getInput =$("#birthday").datepicker().val();
-    console.log(getInput);
-    var selectDate = ($(getInput).text().split("/")[3]);
-    console.log(selectDate);
-}
-saveDate();
+// $("#birthday").datepicker({dateFormat: "mm/dd/yyyy"});
+// var getInput= $("#birthday").datepicker().val();
+// console.log(getInput);
+// // function for saving data
+// function saveDate() {
+//     var getInput =$("#birthday").datepicker().val();
+//     console.log(getInput);
+//     var selectDate = ($(getInput).text().split("/")[3]);
+//     console.log(selectDate);
+// }
+// saveDate();
 
 //function for rendering night mode ((more on the css side))
     $("#birthdata").click(function() {
@@ -36,7 +43,7 @@ saveDate();
 
     $("birthdata").click(function(){});
 
-});
+}
 function getArt() {
 
 };
