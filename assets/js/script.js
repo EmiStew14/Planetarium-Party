@@ -7,30 +7,22 @@ var images = {};
     )
     .then(function(nasaResponse){
         console.log(nasaResponse);
+        console.log('test');
         return nasaResponse.json();
     })
     .then(data => {images=data;
-        Object.keys(data).forEach((key) => {
-            var seePic = document.createElement("span");
-            var spaceImg = document.createElement('img');
-            spaceImg.setAttribute('src', data[key]);
-            console.log(data[key]);
-            seePic.appendChild(spaceImg);
-           document.querySelector('#response-Nasa').appendChild(seePic);
-        });
+        var seePic = document.createElement("span");
+        var spaceImg = document.createElement('img');
+        seePic.appendChild(spaceImg);
+         spaceImg.setAttribute('src', data.collection.items[9].links[0].href);
+         document.querySelector('#text-banner').appendChild(seePic);
+        console.log(data.collection.items[0].links[0].href);
+
     })
     .catch(err => console.error(err));
-        var findText=$("#searchTerm").val();
-        $("#response-Nasa").empty();
+
+    }
       
-        console.log({
-         search_term: findText,
-         images
-        })
-      
-        Object.keys(images).forEach((key) => {
-          console.log(images[key])
-        });
       
       
         // getSpace(function(){
@@ -45,7 +37,6 @@ var images = {};
         //         }
         //     });
         // },0);
-      }
 
     // console.log(nasaResponse);
 
@@ -75,6 +66,7 @@ var images = {};
 //function for rendering night mode ((more on the css side))
     $("#space").click(function() {
         //storage of birthdates in this format MM/DD/YYYY
+        myFunction();
         const search = $(this).siblings("#searchTerm").val();
         console.log(search);
         localStorage.setItem("searchTerm",search);
