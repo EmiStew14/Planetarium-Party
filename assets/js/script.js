@@ -23,7 +23,8 @@ var images = {};
          spaceImg.setAttribute('src', data.collection.items[9].links[0].href);
          document.querySelector('#text-banner').appendChild(seePic);
         console.log(data.collection.items[0].links[0].href);
-		wikiSearch("Jupiter");
+		
+		wikiSearch(searchTerm);
 
     })
     .catch(err => console.error(err));
