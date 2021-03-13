@@ -1,3 +1,9 @@
+// $("#space").on("click", function (event) {
+// 	event.preventDefault();
+// 	var searchTerm = $("#searchTerm").val();
+// 	myFunction(searchTerm);
+// });
+
 function myFunction() {
 var searchTerm = document.querySelector('#searchTerm').value;
 var images = {};
@@ -17,12 +23,35 @@ var images = {};
          spaceImg.setAttribute('src', data.collection.items[9].links[0].href);
          document.querySelector('#text-banner').appendChild(seePic);
         console.log(data.collection.items[0].links[0].href);
+		wikiSearch("Jupiter");
 
     })
     .catch(err => console.error(err));
 
+	
     }
-      
+
+	function wikiSearch(searchTerm) {
+		//Api for Wiki article
+		fetch("https://en.wikipedia.org/w/api.php?action=query&format=json&origin=*&list=search&srsearch=" + searchTerm)
+		.then(function(response) {
+			return response.json();
+		})
+		.then(function(data) {
+			console.log(data);
+			var wikiCard = $("<div>").addClass("card-wiki");
+			var planetTitle = $("<h1>").addClass("card-title").text(data.query.search[0].title);
+			var planetCardBody = $("<div>").addClass("card-body");
+     		var planetArticle = $("<p>").addClass("article-Text").text(data.query.search[0].snippet);
+			 
+			 planetCardBody.append(planetTitle, planetArticle);
+			 wikiCard.append(planetCardBody);
+			 $("#response-wiki").append(wikiCard);
+
+		});
+		
+	}
+	
       
       
         // getSpace(function(){
