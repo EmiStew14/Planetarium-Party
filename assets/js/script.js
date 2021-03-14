@@ -30,8 +30,8 @@ var images = {};
 
 	function wikiSearch(searchTerm) {
 		//Api for Wiki article
-		//fetch("https://en.wikipedia.org/w/api.php?action=query&format=json&origin=*&list=search&srsearch=" + searchTerm)
-		fetch("https://en.wikipedia.org/w/api.php?action=query&format=json&origin=*&titles=" + searchTerm + "r&prop=extracts&exintro&explaintext")
+		// fetch("https://en.wikipedia.org/w/api.php?action=query&format=json&origin=*&list=search&srsearch=" + searchTerm)
+        fetch("https://en.wikipedia.org/w/api.php?format=json&action=query&origin=*&prop=extracts&exintro&explaintext&redirects=1&titles=" + searchTerm)
 		.then(function(response) {
 			return response.json();
 		})
@@ -40,9 +40,7 @@ var images = {};
 			var wikiCard = $("<div>").addClass("card-wiki");
 			//var planetTitle = $("<h1>").addClass("card-title").text(data.query.search[0].title);
 			var planetCardBody = $("<div>").addClass("card-body");
-     		//var planetArticle = $("<p>").addClass("article-Text").text(data.query.search[0].snippet);
-			 var planetArticle = $("<p>").addClass("article-Text").text(data.query.pages[38930].extract);
-			 
+     		var planetArticle = $("<p>").addClass("article-Text").text(data.query.pages[44474].extract);
 			 planetCardBody.append(planetArticle);
 			 wikiCard.append(planetCardBody);
 			 $("#response-wiki").append(wikiCard);
