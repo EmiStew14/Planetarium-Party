@@ -1,8 +1,4 @@
-// $("#space").on("click", function (event) {
-// 	event.preventDefault();
-// 	var searchTerm = $("#searchTerm").val();
-// 	myFunction(searchTerm);
-// });
+
 
 function myFunction() {
 var searchTerm = document.querySelector('#searchTerm').value;
@@ -34,18 +30,20 @@ var images = {};
 
 	function wikiSearch(searchTerm) {
 		//Api for Wiki article
-		fetch("https://en.wikipedia.org/w/api.php?action=query&format=json&origin=*&list=search&srsearch=" + searchTerm)
+		//fetch("https://en.wikipedia.org/w/api.php?action=query&format=json&origin=*&list=search&srsearch=" + searchTerm)
+		fetch("https://en.wikipedia.org/w/api.php?action=query&format=json&origin=*&titles=" + searchTerm + "r&prop=extracts&exintro&explaintext")
 		.then(function(response) {
 			return response.json();
 		})
 		.then(function(data) {
 			console.log(data);
 			var wikiCard = $("<div>").addClass("card-wiki");
-			var planetTitle = $("<h1>").addClass("card-title").text(data.query.search[0].title);
+			//var planetTitle = $("<h1>").addClass("card-title").text(data.query.search[0].title);
 			var planetCardBody = $("<div>").addClass("card-body");
-     		var planetArticle = $("<p>").addClass("article-Text").text(data.query.search[0].snippet);
+     		//var planetArticle = $("<p>").addClass("article-Text").text(data.query.search[0].snippet);
+			 var planetArticle = $("<p>").addClass("article-Text").text(data.query.pages[38930].extract);
 			 
-			 planetCardBody.append(planetTitle, planetArticle);
+			 planetCardBody.append(planetArticle);
 			 wikiCard.append(planetCardBody);
 			 $("#response-wiki").append(wikiCard);
 
