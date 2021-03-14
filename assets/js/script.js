@@ -49,7 +49,7 @@ var images = {};
 		
 	}
 	
-      
+      //jupiter 38930 , saturn 44474 , neptune 19003265 , venus 32745 , uranus 44475 , mars 14640471 , mercury 19007 , earth 9228 , pluto 44469
       
         // getSpace(function(){
         //     Object.keys(images).forEach((key) =>{
