@@ -13,10 +13,32 @@
     <title>Planetarium Party</title>
   </head>
   <body
-    class="bg-no-repeat bg-black bg-center object-cover h-full w-full img-fluid"
-    style="background-image: url('./assets/images/images.jfif');
-    background-repeat: no-repeat; background-size: initial; background-position: center;">
-    <div class="min-h-screen py-6 flex flex-col justify-center sm:py-12">
+    class="container-medium">
+    <!-- Header -->
+    <header>
+    <h1 class="content-title font-size-22 d-flex flex-row font-italic font-weight-bold border-bottom">
+      Welcome to Planetarium Party
+    </h1>
+  </header>
+    
+<div class="page-wrapper with-sidebar">
+        <!-- Sidebar -->
+        <div class="sidebar sidebar-menu">
+          Type the name of a planet in our solar system
+          <input type="text" class="form-control" placeholder="Text input">
+          <input class="btn btn-primary" type="submit" value="Submit">
+        </div>
+
+    <!-- Content wrapper -->
+    <div class="content-wrapper border-left">
+          <!-- Responsive image -->
+          <img src="./assets/images/images.jfif" class="img-fluid w-full h-full" alt="responsive image">
+            <div class="position-absolute bottom-0 text-white" readonly="readonly">Cupcake ipsum dolor sit. Amet cupcake powder cupcake chocolate bar apple pie toffee cheesecake muffin. Tart caramels gingerbread gummies bonbon tart chocolate cake toffee tiramisu.
+              Dessert liquorice sweet roll jujubes pie sweet roll ice cream danish jelly. Muffin chupa chups chocolate cake croissant powder tootsie roll. Bear claw icing lemon drops tiramisu. Sweet roll tootsie roll sesame snaps oat cake candy.
+            </div>
+          </div>
+    </div>
+    <!-- <div class="min-h-screen py-6 flex flex-col justify-center sm:py-12">
       <div id="bday-banner" class="relative py-3 sm:max-w-xl sm:mx-auto">
         <div
           class="absolute inset-0 bg-gradient-to-r from-red-400 to-blue-500 shadow-lg transform -skew-y- sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl"
@@ -41,7 +63,7 @@
               When is your birthday? Select a date down below
             </h3>
           </div>
-          <!--block for entering birth date-->
+          <!--block for entering birth date
           <div class="object-bottom space-y-6">
             <input
               type="text"
@@ -50,7 +72,7 @@
             />
           </div>
           <div class="ring-current flex justify-center">
-            <!--submit button goes here-->
+            <!--submit button goes here
             <button
               id="space"
               type="submit"
@@ -63,7 +85,7 @@
         </div>
       </div>
 
-      <div id="next-title" class="" style="display:none">
+     <div id="next-title" class="" style="display:none">
         <h3 id="next-header" class=""></h3>
           <div id="response-Nasa" class="">
           </div>
@@ -71,7 +93,7 @@
 
       <div id="response-wiki" class="text-white">
       </div>
-    </div>
+    </div> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="./assets/js/script.js"></script>
   </body>
