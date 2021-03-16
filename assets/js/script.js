@@ -129,7 +129,9 @@ var images = {};
 	
     }
 
-	
+	function renderName() {
+        document.querySelector('#next-header').innerHTML= searchTerm.value;
+    }
 	
       
       
@@ -174,20 +176,12 @@ var images = {};
 //function for rendering night mode ((more on the css side))
     $("#space").click(function() {
         //storage of birthdates in this format MM/DD/YYYY
+        renderName();
         myFunction();
         const search = $(this).siblings("#searchTerm").val();
         console.log(search);
         localStorage.setItem("searchTerm",search);
-
-        $("#main-header").hide();
-        $("#sub-header").hide();
-         $("#dub-header").hide();
-        $("#birthday").hide();
-        // $("#next-title").hide();
-        $("#next-title").show();
-        $("#next-header").show();
-        $("response-song").show();
-        $("#nextBtn").show();
+        $("#response-container").show();
     });
 
     $("#space").click(function(){});

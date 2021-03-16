@@ -25,22 +25,21 @@
         <div class="sidebar sidebar-menu">
           <h3 class="sidebar-title">Type the name of a planet in our solar system</h3>
           <div class=" sidebar-content">
-          <input id="searchTerm" type="text" class="form-control" placeholder="Text input">
+          <input id="searchTerm" type="text" class="form-control" placeholder="Find planet">
           <input id="space" class="btn btn-primary  sidebar-content" type="submit" value="Submit">
           </div>
         </div>
 
     <!-- Content wrapper -->
-    <div class="content-wrapper border-left position-relative">
+        <div class="content-wrapper border-left position-relative">
           <!-- Responsive image -->
           <img src="./assets/images/space-background.jpg" class="img-fluid w-full h-full position-absolute" alt="responsive image">
 
-          <div class="card position-absolute text-white" readonly="readonly">
-            <div id="next-title" class="" style="display: none">
-              <h3 id="next-header" class=""></h3>
-              <div id="response-Nasa" class=""></div>
+            <div id="response-container" class="card position-absolute text-white" readonly="readonly" style="display:none">
+              <h3 id="next-header" class="text-center"></h3>
+              <div id="response-Nasa" class="align-center"></div>
+              <div id="response-wiki" class="text-white"></div>
             </div>
-          </div>
         </div>
 
         <!-- previous html with nasa and wiki divs (may need to  be moved from this div)-->
