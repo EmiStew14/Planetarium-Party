@@ -1,2 +1,2 @@
 # Planetarium-Party
-https://emistew14.github.io/birthday-bashorama/
+https://emistew14.github.io/Planetarium-Party/
