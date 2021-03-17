@@ -1,3 +1,4 @@
+var system= [];
 
 function wikiSearch(searchTerm) {
     //Api for Wiki article
@@ -14,82 +15,92 @@ function wikiSearch(searchTerm) {
         $("#response-wiki").html("");
         switch (elsearch) {
             case "pluto":
+               var plutoTitle = document.querySelector('#next-header').innerHTML= data.query.pages[44469].title;
               var plutoCardBody = $("<div>").addClass("card-body");
               var plutoArticle = $("<p>").addClass("article-Text").text(data.query.pages[44469].extract);
               console.log(data.query.pages[44469].extract);
+              plutoCardBody.append(plutoTitle);
               plutoCardBody.append(plutoArticle);
               wikiCard.append(plutoCardBody);
               $("#response-wiki").append(wikiCard);
                
               break;
             case "neptune":
-                
+                var neptuneTitle = document.querySelector('#next-header').innerHTML= data.query.pages[19003265].title;
                           var neptuneCardBody = $("<div>").addClass("card-body");
                           var neptuneArticle = $("<p>").addClass("article-Text").text(data.query.pages[19003265].extract);
                           console.log(data.query.pages[19003265].extract);
+                          neptuneCardBody.append(neptuneTitle);
                           neptuneCardBody.append(neptuneArticle);
                           wikiCard.append(neptuneCardBody);
                           $("#response-wiki").append(wikiCard);
                
               break;
             case "jupiter":
-                
+                var jupiterTitle = document.querySelector('#next-header').innerHTML= data.query.pages[38930].title;
                           var jupiterCardBody = $("<div>").addClass("card-body");
                           var jupiterArticle = $("<p>").addClass("article-Text").text(data.query.pages[38930].extract);
+                          jupiterCardBody.append(jupiterTitle);
                           jupiterCardBody.append(jupiterArticle);
                           wikiCard.append(jupiterCardBody);
                           $("#response-wiki").append(wikiCard);
                
               break;
             case "saturn":
-                
+                var saturnTitle = document.querySelector('#next-header').innerHTML= data.query.pages[44474].title;
                           var saturnCardBody = $("<div>").addClass("card-body");
                           var saturnArticle = $("<p>").addClass("article-Text").text(data.query.pages[44474].extract);
+                          saturnCardBody.append(saturnTitle);
                           saturnCardBody.append(saturnArticle);
                           wikiCard.append(saturnCardBody);
                           $("#response-wiki").append(wikiCard);
                
               break;
             case "venus":
-             
+                var venusTitle = document.querySelector('#next-header').innerHTML= data.query.pages[32745].title;
                           var venusCardBody = $("<div>").addClass("card-body");
                           var venusArticle = $("<p>").addClass("article-Text").text(data.query.pages[32745].extract);
+                          venusCardBody.append(venusTitle);
                           venusCardBody.append(venusArticle);
                           wikiCard.append(venusCardBody);
                           $("#response-wiki").append(wikiCard);
                      
               break;
             case "mercury":
-              
+                var mercuryTitle = document.querySelector('#next-header').innerHTML= data.query.pages[19007].title;
                           var mercuryCardBody = $("<div>").addClass("card-body");
                           var mercuryArticle = $("<p>").addClass("article-Text").text(data.query.pages[19007].extract);
+                          mercuryCardBody.append(mercuryTitle);
                           mercuryCardBody.append(mercuryArticle);
                           wikiCard.append(mercuryCardBody);
                           $("#response-wiki").append(wikiCard);
                      
               break;
             case "uranus":
-             
+                var uranusTitle = document.querySelector('#next-header').innerHTML= data.query.pages[44475].title;
                           var uranusCardBody = $("<div>").addClass("card-body");
                           var uranusArticle = $("<p>").addClass("article-Text").text(data.query.pages[44475].extract);
+                          uranusCardBody.append(uranusTitle);
                           uranusCardBody.append(uranusArticle);
                           wikiCard.append(uranusCardBody);
                           $("#response-wiki").append(wikiCard);
                      
                 break;
            case "mars":
-             
+            var marsTitle = document.querySelector('#next-header').innerHTML= data.query.pages[14640471].title;
                           var marsCardBody = $("<div>").addClass("card-body");
                           var marsArticle = $("<p>").addClass("article-Text").text(data.query.pages[14640471].extract);
+                          marsCardBody.append(marsTitle);
                           marsCardBody.append(marsArticle);
                           wikiCard.append(marsCardBody);
                           $("#response-wiki").append(wikiCard);
                      
                 break;
           case "earth":
-               
+            var earthTitle = document.querySelector('#next-header').innerHTML= data.query.pages[9228].title;
                           var earthCardBody = $("<div>").addClass("card-body");
                           var earthArticle = $("<p>").addClass("article-Text").text(data.query.pages[9228].extract);
+                          earthCardBody.append(earthTitle);
                           earthCardBody.append(earthArticle);
                           wikiCard.append(earthCardBody);
                           $("#response-wiki").append(wikiCard);
@@ -129,11 +140,38 @@ var images = {};
 	
     }
 
-	function renderName() {
-        document.querySelector('#next-header').innerHTML= searchTerm.value;
+    var planetTabs= function(planetText) {
+        // create elements that make up a list item
+        var Li = $("<button>").addClass("sidebar-content");
+        var planetP = $("<span>")
+            .addClass("m-1")
+            .text(planetText);
+          
+            Li.on("click", function () {
+            $("#response-wiki").html("");
+            myFunction();
+            wikiSearch(($(this).children().text()));
+            })
+        
+            // append p element to parent li
+            Li.append(planetP);
+          
+            // append to ul list on the page
+            $("#list").append(Li);
+        
+          };
+
+    function saveIt() {
+        var Planet = document.querySelector("#searchTerm").value;
+        system.push(Planet);
+        // localStorage.setItem("location",location);
+        localStorage.setItem("planet", JSON.stringify(system));
+        console.log(system);
     }
 	
-      
+    function loadIt() {
+        values = JSON.parse(localStorage.getItem(system));
+   };
       
         // getSpace(function(){
         //     Object.keys(images).forEach((key) =>{
@@ -175,13 +213,16 @@ var images = {};
 
 //function for rendering night mode ((more on the css side))
     $("#space").click(function() {
+        const search = $("#searchTerm").val();
         //storage of birthdates in this format MM/DD/YYYY
-        renderName();
         myFunction();
-        const search = $(this).siblings("#searchTerm").val();
-        console.log(search);
-        localStorage.setItem("searchTerm",search);
+        // const search = $(this).siblings("#searchTerm").val();
+        // console.log(search);
+        // localStorage.setItem("searchTerm",search);
         $("#response-container").show();
+        planetTabs(search);
+        saveIt();
+        loadIt();
     });
 
     $("#space").click(function(){});
