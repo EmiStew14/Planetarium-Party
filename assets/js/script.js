@@ -1,4 +1,5 @@
-var system= [];
+var system= JSON.parse(localStorage.getItem("planets"))|| [];
+var searchTerm = document.querySelector('#searchTerm').value;
 
 function wikiSearch(searchTerm) {
     //Api for Wiki article
@@ -18,7 +19,6 @@ function wikiSearch(searchTerm) {
                var plutoTitle = document.querySelector('#next-header').innerHTML= data.query.pages[44469].title;
               var plutoCardBody = $("<div>").addClass("card-body");
               var plutoArticle = $("<p>").addClass("article-Text").text(data.query.pages[44469].extract);
-              console.log(data.query.pages[44469].extract);
               plutoCardBody.append(plutoTitle);
               plutoCardBody.append(plutoArticle);
               wikiCard.append(plutoCardBody);
@@ -29,7 +29,6 @@ function wikiSearch(searchTerm) {
                 var neptuneTitle = document.querySelector('#next-header').innerHTML= data.query.pages[19003265].title;
                           var neptuneCardBody = $("<div>").addClass("card-body");
                           var neptuneArticle = $("<p>").addClass("article-Text").text(data.query.pages[19003265].extract);
-                          console.log(data.query.pages[19003265].extract);
                           neptuneCardBody.append(neptuneTitle);
                           neptuneCardBody.append(neptuneArticle);
                           wikiCard.append(neptuneCardBody);
@@ -111,8 +110,8 @@ function wikiSearch(searchTerm) {
     //jupiter 38930 , saturn 44474 , neptune 19003265 , venus 32745 , uranus 44475 , mars 14640471 , mercury 19007 , earth 9228 , pluto 44469
 }
 
-function myFunction() {
-var searchTerm = document.querySelector('#searchTerm').value;
+function myFunction(searchTerm) {
+// var searchTerm = document.querySelector('#searchTerm').value;
 var images = {};
     //APIs for nasa image/video searches
     fetch(
@@ -130,9 +129,7 @@ var images = {};
         seePic.appendChild(spaceImg);
          spaceImg.setAttribute('src', data.collection.items[9].links[0].href);
          document.querySelector('#response-Nasa').appendChild(seePic);
-        console.log(data.collection.items[0].links[0].href);
 		
-		wikiSearch(searchTerm);
 
     })
     .catch(err => console.error(err));
@@ -142,36 +139,55 @@ var images = {};
 
     var planetTabs= function(planetText) {
         // create elements that make up a list item
-        var Li = $("<button>").addClass("sidebar-content");
+        // var pfind= fetchimg.value;
+        var Li = $("<button>").addClass("list sidebar-content");
+   
         var planetP = $("<span>")
             .addClass("m-1")
             .text(planetText);
           
-            Li.on("click", function () {
-            $("#response-wiki").html("");
-            myFunction();
-            wikiSearch(($(this).children().text()));
-            })
-        
             // append p element to parent li
             Li.append(planetP);
           
             // append to ul list on the page
             $("#list").append(Li);
-        
+
+            Li.on("click", function () {
+                $("#response-wiki").html("");
+                 $('#response-Nasa').html("");
+                 myFunction(($(this).children().text()));
+                 wikiSearch(($(this).children().text()));
+    
+                })
           };
 
-    function saveIt() {
-        var Planet = document.querySelector("#searchTerm").value;
-        system.push(Planet);
+    function saveIt(planetN) {
+        // const planetN = $(this).siblings("#searchTerm").val();
+        if (system.indexOf(planetN) === -1) {
+            system.push(planetN);
+            planetTabs(planetN);
+        }
+        localStorage.setItem("planets", JSON.stringify(system));
         // localStorage.setItem("location",location);
-        localStorage.setItem("planet", JSON.stringify(system));
+        // localStorage.setItem("planet", JSON.stringify(system));
         console.log(system);
     }
 	
     function loadIt() {
-        values = JSON.parse(localStorage.getItem(system));
-   };
+        for (let i = 0; i < system.length; i++) {
+            planetTabs(system[i]);          
+        }
+        // values = JSON.parse(localStorage.getItem(system));
+    //     var values = [],
+    //     keys = Object.keys(localStorage),
+    //      i = keys.length;
+    
+    //  while ( i-- ) {
+    //     values.push( localStorage.getItem(keys[i],("#searchTerm").val) );
+    //     }
+    // $(".list sidebar-content").append(values);
+    //  return values;
+     };
       
         // getSpace(function(){
         //     Object.keys(images).forEach((key) =>{
@@ -215,17 +231,22 @@ var images = {};
     $("#space").click(function() {
         const search = $("#searchTerm").val();
         //storage of birthdates in this format MM/DD/YYYY
-        myFunction();
+        myFunction(search);
+        wikiSearch(search);
         // const search = $(this).siblings("#searchTerm").val();
         // console.log(search);
         // localStorage.setItem("searchTerm",search);
         $("#response-container").show();
-        planetTabs(search);
-        saveIt();
-        loadIt();
+        saveIt(search);
+        // planetTabs(search);
+        // loadIt();
+        $("#searchTerm").val("");
     });
-
-    $("#space").click(function(){});
+    $("#clear").click(function() {
+        $("#list").empty();
+        localStorage.clear();
+    })
+    loadIt();
 //function for rendering night mode ((more on the css side))
 //generate music videos or album covers
 //display movie posters
