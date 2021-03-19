@@ -13,16 +13,20 @@
   </head>
   <body
     class="container-medium dark-mode">
-    <div class="page-wrapper with-navbar with-sidebar">
+    <div class="page-wrapper with-navbar with-sidebar" data-sidebar-type="overlayed-sm-and-down">
     <!-- Header -->
-    <nav class="navbar justify-content-center">
-    <h1 class="content-title font-size-22 d-flex flex-row font-italic font-weight-bold border-bottom mt-10">
-      Welcome to Planetarium Party
-    </h1>
-</nav>
+      <nav class="navbar justify-content-center">
+        <h1 class="content-title font-size-22 d-flex flex-row font-italic font-weight-bold border-bottom mt-10">
+            Welcome to Planetarium Party
+          </h1>
+        <div class="row flex-wrap">
+          <button class="btn btn-primary" type="button" onclick="halfmoon.toggleSidebar()">Toggle sidebar</button>
+        </div>
+      </nav>
+      <div class="sidebar-overlay" onclick="halfmoon.toggleSidebar()"></div>
     
         <!-- Sidebar -->
-        <div class="sidebar sidebar-menu text-center ">
+        <div class="sidebar sidebar-menu sidebar-overlay text-center container-medium">
           <h3 class="sidebar-title">Type the name of a planet in our solar system</h3>
           <div class=" sidebar-content">
           <input id="searchTerm" type="text" class="form-control" placeholder="Find planet">
@@ -33,84 +37,21 @@
           <button id="clear" class="btn btn-primary">Clear Planet List</button>
         </div>
 
-    <!-- Content wrapper -->
-        <div class="content-wrapper border-left position-relative">
+      <!-- Content wrapper -->
+        <div class="content-wrapper border-left flew-wrap position-relative container-medium container-small">
           <!-- Responsive image -->
           <img src="./assets/images/space-background.jpg" class="img-fluid w-full h-full position-absolute" alt="responsive image">
 
             <div id="response-container" class="card position-absolute text-white" readonly="readonly" style="display:none">
               <h3 id="next-header" class="text-center"></h3>
-              <div id="response-Nasa" class="text-center"></div>
-              <div id="response-wiki" class="text-white"></div>
+              <div id="response-Nasa" class="text-center col-auto"></div>
+              <div id="response-wiki" class="text-white col-auto"></div>
             </div>
         </div>
-
-        <!-- previous html with nasa and wiki divs (may need to  be moved from this div)-->
-        <!-- <div id="next-title" class="" style="display: none">
-          <h3 id="next-header" class=""></h3>
-          <div id="response-Nasa" class=""></div>
-        </div>
-
-        <div id="response-wiki" class="text-white"></div>
-      </div>
-    </div> -->
-    <!-- <div class="min-h-screen py-6 flex flex-col justify-center sm:py-12">
-      <div id="bday-banner" class="relative py-3 sm:max-w-xl sm:mx-auto">
-        <div
-          class="absolute inset-0 bg-gradient-to-r from-red-400 to-blue-500 shadow-lg transform -skew-y- sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl"
-        ></div>
-        <div
-          id="text-banner"
-          class="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20"
-        >
-          <header class="text-center">
-            <h1
-              id="main-header"
-              class="uppercase font-bold font- text-pink-400 text-3xl space-y-4"
-            >
-              Welcome to Planetarium Party!
-            </h1>
-            <h2 id="sub-header" class="text-lg text-mono space-y-2">
-              Kick back and see what top hits came out around your timeframe!
-            </h2>
-          </header>
-          <div id="bd" class="space-y-2">
-            <h3 id="dub-header">
-              When is your birthday? Select a date down below
-            </h3>
-          </div>
-          <!--block for entering birth date
-          <div class="object-bottom space-y-6">
-            <input
-              type="text"
-              id="searchTerm"
-              value=""
-            />
-          </div>
-          <div class="ring-current flex justify-center">
-            <!--submit button goes here
-            <button
-              id="space"
-              type="submit"
-              value=""
-              class="cursor-pointer bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 w-auto"
-            >
-              Enter
-            </button>
-          </div>
-        </div>
-      </div>
-
-     <div id="next-title" class="" style="display:none">
-        <h3 id="next-header" class=""></h3>
-          <div id="response-Nasa" class="">
-          </div>
-      </div>
-
-      <div id="response-wiki" class="text-white">
-      </div>
-    </div> -->
+    </div>
+       
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="halfmoon-1.1.1/js/halfmoon.js"></script>
     <script src="./assets/js/script.js"></script>
   </body>
 </html>
