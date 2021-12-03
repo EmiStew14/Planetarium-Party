@@ -16,14 +16,17 @@
     <div class="page-wrapper with-navbar with-sidebar" data-sidebar-type="overlayed-sm-and-down">
     <!-- Header -->
       <nav class="navbar">
-        <div class="row flex-wrap col-3">
-          <button class="btn btn-primary" type="button" onclick="halfmoon.toggleSidebar()">Toggle sidebar</button>
+        <div class="row flex-wrap col-2">
+          <button class="btn btn-primary" type="button" onclick="halfmoon.toggleSidebar()">
+            <span class="hidden-collapse-open text-muted">&plus;</span>
+            <span class="hidden-collapse-closed text-muted">&minus;</span>
+          </button>
         </div>
-        <h1 class="content-title font-size-22 d-flex flex-row font-italic font-weight-bold border-bottom mt-10 col-5">
+        <h1 class="justify-content-center content-title font-size-22 d-flex flex-row font-italic font-weight-bold border-bottom mt-10 col">
             Welcome to Planetarium Party
           </h1>
       </nav>
-      <div class="sidebar-overlay" onclick="halfmoon.toggleSidebar()"></div>
+      <div class="sidebar-overlay align-self-baseline" onclick="halfmoon.toggleSidebar()"></div>
     
         <!-- Sidebar -->
         <div class="sidebar sidebar-menu sidebar-overlay text-center container-medium">
